@@ -1,12 +1,14 @@
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import express from 'express';
-import { paths } from './paths.js';
+import { api } from './paths.js';
 export const app = express();
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
-paths(app);
+app.use(express.json());
+
+api(app);
 
 if (!process.env['VITE']) {
   const frontendFiles = DIRNAME + '/dist';
