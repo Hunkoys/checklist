@@ -7,6 +7,8 @@ Stack:
 * Sass
 * Expressjs
 
+<br>
+
 ## Development
 
 ### 1. Download
@@ -35,6 +37,7 @@ npm run dev
 
 You'll then be given a link. Type it in your prefered browser to preview changes on your code.
 
+<br>
 
 
 ## Deploy
@@ -45,13 +48,14 @@ npm run build
 ```
 
 ### 2. Copy production files.
+
+These are the files you need to serve your app.
+
 ```
 📄 package.json
 📄 package-lock.json
 📁 output
 ```
-
-These are the files you need to serve your app.
 
 ### 3. Install dependencies.
 Open a terminal in the copied files' folder and run these commands.
