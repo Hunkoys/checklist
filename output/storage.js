@@ -2,14 +2,14 @@ import fs from 'fs/promises';
 
 const DIR = 'output/storage';
 
-const READ = async (filename, callback) => {
+const READ = async (filename, callback, onError) => {
   await fs
     .open(`${DIR}/${filename}`, 'r')
     .then((file) => {
       file.readFile({ encoding: 'utf-8' }).then(callback);
       file.close();
     })
-    .catch(console.log);
+    .catch(onError);
 };
 const SAVE = async (filename, content) => {
   await fs
@@ -40,8 +40,8 @@ function queue(filename) {
 }
 
 export default {
-  read: (filename, callback) => {
-    queue(filename).push(new Command(READ, callback));
+  read: (filename, callback, onError) => {
+    queue(filename).push(new Command(READ, callback, onError));
     startDraining(filename);
   },
   save: (filename, content) => {
